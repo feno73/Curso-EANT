@@ -36,7 +36,7 @@
 			<p>Validar que cada dato ingresado resulte "correcto" según su naturaleza.</p>
 			<p>Mostrar un mensaje en el <code>&lt;article&gt;</code> que indique el cuanto valen y cuantas unidades hay de ese producto.</p>
 			<article>
-
+				<p id="producto"></p>
 			</article>
 		</aside>
 
@@ -59,6 +59,8 @@
 
 			let precio = parseFloat(prompt("Ingrese el precio del producto:"));
 			let disponibilidad = confirm("¿Esta disponible?");
+			
+			document.getElementById('producto').innerHTML='El precio de '+nombre+' es de '+precio+' y quedan '+stock+' unidades';
 
 			console.log(nombre);
 			console.log(stock);
