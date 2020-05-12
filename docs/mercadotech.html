@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="es-AR">
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width,initial-scale=1,shrink-to-fit=no">
+	<title>MercadoTECH - Tu e-shop.js</title>
+	<link rel="stylesheet"
+		href="https://blackrockdigital.github.io/startbootstrap-shop-item/vendor/bootstrap/css/bootstrap.min.css">
+	<link rel="stylesheet" href="https://blackrockdigital.github.io/startbootstrap-shop-item/css/shop-item.css">
+</head>
+
+<body>
+	<header class="navbar navbar-expand-lg navbar-dark bg-secondary fixed-top">
+		<div class="container">
+			<a class="navbar-brand font-weight-bold" href="#">&#x1F5A5; MercadoTECH</a>
+			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#menu" aria-controls="menu"
+				aria-expanded="false" aria-label="Menu">
+				<span class="navbar-toggler-icon"></span>
+			</button>
+			<nav class="collapse navbar-collapse" id="menu">
+				<ul class="navbar-nav ml-auto">
+					<li class="nav-item">
+						<a id="login" class="nav-link" href="#">&#x1F512; Ingresar</a>
+					</li>
+					<li class="nav-item d-none">
+						<a id="logout" class="nav-link" href="#">Bienvenid@ <span>{{USUARIO}}</span> [x]</a>
+					</li>
+				</ul>
+			</nav>
+		</div>
+	</header>
+	<main class="container">
+		<h2 class="w-100 my-3 p-3 border">&#x2B50; Productos Destacados</h2>
+		<!-- AREA PRODUCTOS DESTACADOS -->
+		<section id="productos-destacados" class="row py-3">
+
+		</section>
+	</main>
+	<footer class="py-5 bg-dark">
+		<div class="container">
+			<p class="m-0 text-center text-white">¡La mejor manera de comprar online!</p>
+		</div>
+	</footer>
+	<script src="https://blackrockdigital.github.io/startbootstrap-shop-item/vendor/jquery/jquery.min.js"></script>
+	<script
+		src="https://blackrockdigital.github.io/startbootstrap-shop-item/vendor/bootstrap/js/bootstrap.bundle.min.js">
+	</script>
+	<script src="producto.class.js"></script>
+	<script>
+		/*let xiaomi = new Producto("Mi 10", 1000, 549.99, "http://placeimg.com/480/320/tech", "Xiaomi")
+		let nokia = new Producto("7.1", 1000, 349.99, "http://placeimg.com/480/320/tech", "Nokia")
+		let moto = new Producto("G8 Plus", 1000, 249.99, "http://placeimg.com/480/320/tech", "Moto")
+		let iphone = new Producto("iPhone X", 1000, 949.99, "http://placeimg.com/480/320/tech", "Apple")
+		let galaxy = new Producto("Galaxy S10", 1000, 849.99, "http://placeimg.com/480/320/tech", "Samsung")
+
+		let listado = [xiaomi, nokia, moto, iphone, galaxy]
+		/*xiaomi.Mostrar()
+		nokia.Mostar()
+		listado.forEach(function(producto){
+			producto.Mostrar()
+		})*/
+
+		fetch("https://api.npoint.io/6b51ed82842567c3a283").then(function(rta){
+			return rta.json()
+		}).then(function(productos){
+			productos.forEach(function({Nombre, Stock, Precio, Imagen, Marca}){
+				let celular = new Producto(Nombre, Stock, Precio, Imagen, Marca)
+				celular.Mostrar()
+			})
+		})
+	</script>
+</body>
+
+</html>

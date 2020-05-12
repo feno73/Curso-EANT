@@ -39,12 +39,12 @@
 				<p id="producto"></p>
 			</article>
 		</aside>
-
+		<script src="assets/validador.js"></script>
 		<script>
 			//Ingreso de datos
 			let nombre = prompt("Ingrese el nombre del producto:");
 
-			while (nombre == "" || nombre == null || nombre == undefined){
+			while (nombre == "" || nombre == null || nombre == undefined || !isNaN(nombre)){
 				alert("ERROR-> El nombre no puede quedar vacio");
 				nombre = prompt("Ingrese el nombre del producto:");
 			};
@@ -58,9 +58,20 @@
 			
 
 			let precio = parseFloat(prompt("Ingrese el precio del producto:"));
+
+			while (isNaN(precio) || precio < 0 || stock > 1000){
+				alert("ERROR-> El precio no es valido");
+				precio = parseFloat(prompt("Ingrese el precio del producto:"));
+			};
+
 			let disponibilidad = confirm("¿Esta disponible?");
-			
-			document.getElementById('producto').innerHTML='El precio de '+nombre+' es de '+precio+' y quedan '+stock+' unidades';
+			//Antes 2015
+			//let mensaje = "El precio de "+nombre+" es de $"+precio+" y quedan "+stock+" unidades";
+
+			//Despues de 2015
+			let mensaje = `El precio de ${nombre} es de $${precio} y quedan ${stock} unidades`;
+
+			document.querySelector("#producto").innerText = mensaje;
 
 			console.log(nombre);
 			console.log(stock);

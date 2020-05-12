@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="es-AR">
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width,initial-scale=1,shrink-to-fit=no">
+	<title>MercadoTECH - Tu e-shop.js</title>
+	<link rel="stylesheet"
+		href="https://blackrockdigital.github.io/startbootstrap-shop-item/vendor/bootstrap/css/bootstrap.min.css">
+	<link rel="stylesheet" href="https://blackrockdigital.github.io/startbootstrap-shop-item/css/shop-item.css">
+</head>
+
+<body>
+	<header class="navbar navbar-expand-lg navbar-dark bg-secondary fixed-top">
+		<div class="container">
+			<a class="navbar-brand font-weight-bold" href="#">&#x1F5A5; MercadoTECH</a>
+			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#menu" aria-controls="menu"
+				aria-expanded="false" aria-label="Menu">
+				<span class="navbar-toggler-icon"></span>
+			</button>
+			<nav class="collapse navbar-collapse" id="menu">
+				<ul class="navbar-nav ml-auto">
+					<li class="nav-item">
+						<a id="login" class="nav-link" href="#">&#x1F512; Ingresar</a>
+					</li>
+					<li class="nav-item d-none">
+						<a id="logout" class="nav-link" href="#">Bienvenid@ <span>{{USUARIO}}</span> [x]</a>
+					</li>
+				</ul>
+			</nav>
+		</div>
+	</header>
+	<main class="container">
+		<h2 class="w-100 my-3 p-3 border">&#x2B50; Productos Destacados</h2>
+		<!-- AREA PRODUCTOS DESTACADOS -->
+		<section id="productos-destacados" class="row py-3">
+
+		</section>
+	</main>
+	<footer class="py-5 bg-dark">
+		<div class="container">
+			<p class="m-0 text-center text-white">¡La mejor manera de comprar online!</p>
+		</div>
+	</footer>
+	<script src="https://blackrockdigital.github.io/startbootstrap-shop-item/vendor/jquery/jquery.min.js"></script>
+	<script
+		src="https://blackrockdigital.github.io/startbootstrap-shop-item/vendor/bootstrap/js/bootstrap.bundle.min.js">
+	</script>
+	<script>
+		///LAS FUNCIONES SE INICIALIZAN ANTES DE INVOCARLAS////
+		//function mostrarProducto(producto){<---Sintaxis azucarada
+		//window.mostrarProducto = function(producto){ //<--Sintaxis real
+			const mostrarProducto = function(){
+			const ficha = document.createElement("article")
+			ficha.classList.add("col-4")
+			ficha.innerHTML = `<div class="card h-100">
+										<a href="#">
+											<img class="card-img-top img-fluid" src=${this.imagen} alt="">
+										</a>
+										<div class="card-body">
+											<h4 class="card-title"><a href="#">${this.nombre}</a> <span class="badge badge-pill badge-success float-right">$${this.precio}</span></h4>
+											<p class="card-text">${this.stock} unid.</p>
+											<button class="btn btn-primary float-right">Comprar</button>
+										</div>
+									</div>`
+			document.querySelector("#productos-destacados").appendChild(ficha)
+		}
+		//////Objeto literal//////
+		let iphone = { 
+			nombre: "IPhone X",
+			stock: 1000,
+			precio: 499.99,
+			imagen: "http://placeimg.com/480/320/tech",
+			mostrarProducto : mostrarProducto
+		}
+		//////Objeto diferido/////
+		let galaxy = {}
+		galaxy.nombre = "Galaxy S10"
+		galaxy.stock = 1000
+		galaxy.precio = 449.99
+		galaxy.imagen = "http://placeimg.com/480/320/tech"
+		galaxy.mostrarProducto = mostrarProducto
+		
+		let motorola = {
+			nombre: "Moto G8 Power",
+			stock: 1000,
+			precio: 349.99,
+			imagen: "http://placeimg.com/480/320/tech",
+			mostrarProducto : mostrarProducto
+		}
+///////////////////////////////////////////////
+		let xiaomi = new producto("Xiaomi Mi 10", 1000, 549.99, "http://placeimg.com/480/320/tech")
+		let nokia = new producto("Nokia 7.1", 1000, 349.99, "http://placeimg.com/480/320/tech")
+		
+		class producto {
+			constructor(n, s, p, i){
+				this.nombre = n
+				this.stock = s
+				this.precio = p
+				this.imagen = i
+			}
+			Mostrar(){
+				const ficha = document.createElement("article")
+				ficha.classList.add("col-4")
+				ficha.innerHTML = `<div class="card h-100">
+											<a href="#">
+												<img class="card-img-top img-fluid" src=${this.imagen} alt="">
+											</a>
+											<div class="card-body">
+												<h4 class="card-title"><a href="#">${this.nombre}</a> <span class="badge badge-pill badge-success float-right">$${this.precio}</span></h4>
+												<p class="card-text">${this.stock} unid.</p>
+												<button class="btn btn-primary float-right">Comprar</button>
+											</div>
+										</div>`
+				document.querySelector("#productos-destacados").appendChild(ficha)
+			}
+		}
+	</script>
+</body>
+
+</html>

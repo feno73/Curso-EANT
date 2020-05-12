@@ -1,0 +1,22 @@
+{
+  "name": "eant",
+  "version": "1.0.0",
+  "description": "Proyecto cursoJS",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/feno73/cursoJS-eant.git"
+  },
+  "author": "feno",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/feno73/cursoJS-eant/issues"
+  },
+  "homepage": "https://github.com/feno73/cursoJS-eant#readme",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}

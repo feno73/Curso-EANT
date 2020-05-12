@@ -31,14 +31,15 @@
 			<p>Generar una función <code>calcularIVA</code> que tome el valor del campo y escriba el resultado en el <code>span</code></p>
 			<p>Ejecutar la función utilizando la consola de desarrollador</p>
 		</aside>
-
+		<script src="assets/validador.js"></script>
 		<script>
 			function calcularIVA(){
 				/* 1) seleccionar el campo numérico y guardarlo en una variable */
-
+				let campo = document.querySelector("#precio");
 				/* 2) obtener el valor del campo */
-
+				let valor = campo.value;
 				/* 3) escribir en el span el valor del campo + IVA */
+				document.querySelector(".total").innerText = valor * 1.21;
 			}
 		</script>
 	</body>

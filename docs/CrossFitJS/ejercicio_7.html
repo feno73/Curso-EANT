@@ -56,22 +56,34 @@
 			<p>Cuando el usuario selecciona una de las opciones, mostrar la que corresponda (removiendo la clase)</p>
 			<p>Si el usuario vuelve a "seleccionar habitación" quedan todas escondidas</p>
 		</aside>
-
+		<script src="assets/validador.js"></script>
 		<script>
 			/* 1) Seleccionar todas las habitaciones */
-
+			let habitaciones = document.querySelectorAll(".habitacion");
 			/* 2) Seleccionar el select */
-
+			let menu = document.querySelector("select[name='habitacion']");
 			/* 3) Asignar la funcion mostrarOpcion al evento correspondiente */
-
+			menu.onchange = mostrarOpcion;
 			/* 4) Pensar una solucion logica para esconder todas las habitaciones cada vez que sea necesario */
-
+			esconderHabitaciones();
+			
+			function esconderHabitaciones(){
+				for (let i = 0; i < habitaciones.length; i++) {
+					habitaciones[i].classList.add("esconder");
+				};
+			};
+			
 			function mostrarOpcion(){
+				esconderHabitaciones();
 				/* 5) Obtener la opción seleccionada */
-
+				let opcion = menu.value;
+				if(opcion == 0){
+					return
+				}
 				/* 6) Seleccionar la habitación correspondiente usando un selector dinámico */
-
+				let elegida = document.querySelector(`.habitacion-${opcion}`)
 				/* 7) Asignar la clase correspondiente */
+				elegida.classList.remove("esconder")
 			}
 		</script>
 	</body>
