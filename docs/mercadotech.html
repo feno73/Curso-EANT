@@ -60,15 +60,13 @@
 		listado.forEach(function(producto){
 			producto.Mostrar()
 		})*/
-
-		fetch("https://api.npoint.io/6b51ed82842567c3a283").then(function(rta){
+		let productos = null
+		fetch("productos.json").then(function(rta){
 			return rta.json()
-		}).then(function(productos){
-			productos.forEach(function({Nombre, Stock, Precio, Imagen, Marca}){
-				let celular = new Producto(Nombre, Stock, Precio, Imagen, Marca)
-				celular.Mostrar()
-			})
+		}).then(function(objetos){
+			productos = objetos.map( ({Nombre, Stock, Precio, Imagen, Marca}) => new Producto(Nombre, Stock, Precio, Imagen, Marca) )
 		})
+
 	</script>
 </body>
 
