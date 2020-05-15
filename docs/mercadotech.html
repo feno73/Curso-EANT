@@ -61,14 +61,10 @@
 			producto.Mostrar()
 		})*/
 
-		fetch("productos.json").then(function(rta){
-			return rta.json()
-		}).then(function(objetos){
-			return objetos.map( ({Nombre, Stock, Precio, Imagen, Marca}) => new Producto(Nombre, Stock, Precio, Imagen, Marca) )
-		}).then(function(productos){
-			let mayor300 = productos.filter(producto => producto.precio > 300 )
-			return mayor300
-		}).then(function(productos){
+		fetch("productos.json").then(rta =>  rta.json() )
+		.then(objetos => objetos.map( ({Nombre, Stock, Precio, Imagen, Marca}) => new Producto(Nombre, Stock, Precio, Imagen, Marca) ) )
+		.then(productos => productos.filter(producto => producto.precio > 300 ) )
+		.then(productos => {
 			productos.forEach(producto => {
 				producto.Mostrar()
 			})
