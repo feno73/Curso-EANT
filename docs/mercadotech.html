@@ -60,13 +60,19 @@
 		listado.forEach(function(producto){
 			producto.Mostrar()
 		})*/
-		let productos = null
+
 		fetch("productos.json").then(function(rta){
 			return rta.json()
 		}).then(function(objetos){
-			productos = objetos.map( ({Nombre, Stock, Precio, Imagen, Marca}) => new Producto(Nombre, Stock, Precio, Imagen, Marca) )
+			return objetos.map( ({Nombre, Stock, Precio, Imagen, Marca}) => new Producto(Nombre, Stock, Precio, Imagen, Marca) )
+		}).then(function(productos){
+			let mayor300 = productos.filter(producto => producto.precio > 300 )
+			return mayor300
+		}).then(function(productos){
+			productos.forEach(producto => {
+				producto.Mostrar()
+			})
 		})
-
 	</script>
 </body>
 
