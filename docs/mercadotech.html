@@ -55,20 +55,50 @@
 		let galaxy = new Producto("Galaxy S10", 1000, 849.99, "http://placeimg.com/480/320/tech", "Samsung")
 
 		let listado = [xiaomi, nokia, moto, iphone, galaxy]
-		/*xiaomi.Mostrar()
+		xiaomi.Mostrar()
 		nokia.Mostar()
 		listado.forEach(function(producto){
 			producto.Mostrar()
 		})*/
+		///////////////////////AJAX//////////////////////////////////////////
+		// fetch("productos.json").then(rta =>  rta.json() )
+		// 	.then(objetos => objetos.map( ({Nombre, Stock, Precio, Imagen, Marca}) => new Producto(Nombre, Stock, Precio, Imagen, Marca) ) )
+		// 	.then(productos => productos.filter(producto => producto.precio > 300 ) )
+		// 	.then(resultado => {
+		// 		if( resultado instanceof Array ){	
+		// 			resultado.forEach( producto => {
+		// 				resultado.Mostrar()
+		// 			})
+		// 		}else{
+		// 			resultado.Mostrar()
+		// 		}
+		// 	})
+		//////////////////////Usos ASYNC/AWAIT/////////////////////////////
 
-		fetch("productos.json").then(rta =>  rta.json() )
-		.then(objetos => objetos.map( ({Nombre, Stock, Precio, Imagen, Marca}) => new Producto(Nombre, Stock, Precio, Imagen, Marca) ) )
-		.then(productos => productos.filter(producto => producto.precio > 300 ) )
-		.then(productos => {
-			productos.forEach(producto => {
-				producto.Mostrar()
-			})
-		})
+		const GET = async url => { ///Se puede usar como genericamente para consumir JSON
+				let rta = await fetch(url)
+				return await rta.json()
+		}
+
+		const armarCatalogo = async () => {
+			let objetos = await GET("productos.json")
+			let productos = await objetos.map( ({Nombre, Stock, Precio, Imagen, Marca}) => new Producto(Nombre, Stock, Precio, Imagen, Marca) ) 
+			let resultado = await productos.filter(producto => producto.precio > 300 )
+			
+			return resultado
+		}
+
+		window.onload = async () => {
+			let catalogo = await armarCatalogo()
+
+			if( catalogo instanceof Array ){	
+				catalogo.forEach( producto => {
+					producto.Mostrar()
+				})
+			}else{
+				catalogo.Mostrar()
+			}
+		}
 	</script>
 </body>
 
