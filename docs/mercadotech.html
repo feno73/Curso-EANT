@@ -8,6 +8,17 @@
 	<link rel="stylesheet"
 		href="https://blackrockdigital.github.io/startbootstrap-shop-item/vendor/bootstrap/css/bootstrap.min.css">
 	<link rel="stylesheet" href="https://blackrockdigital.github.io/startbootstrap-shop-item/css/shop-item.css">
+<!-- 	<style>
+		article{
+			opacity: 0;
+			animation: fadeIN 3s forwards;
+		}
+
+		@keyframes fadeIn {
+			from { opacity: 0 }
+			to { opacity: 1 }			
+		}
+	</style> -->
 </head>
 
 <body>
@@ -32,6 +43,11 @@
 	</header>
 	<main class="container">
 		<h2 class="w-100 my-3 p-3 border">&#x2B50; Productos Destacados</h2>
+		<nav class="filtros">
+			<button class="btn btn-secondary" data-min="0" data-max="500" >$0 - $500</button>
+			<button class="btn btn-secondary" data-min="500" data-max="1500">$500 - $1500</button>
+			<button class="btn btn-secondary" data-min="1500" data-max="999999">+ $1500</button>
+		</nav>
 		<!-- AREA PRODUCTOS DESTACADOS -->
 		<section id="productos-destacados" class="row py-3">
 
@@ -80,25 +96,39 @@
 				return await rta.json()
 		}
 
-		const armarCatalogo = async () => {
-			let objetos = await GET("productos.json")
-			let productos = await objetos.map( ({Nombre, Stock, Precio, Imagen, Marca}) => new Producto(Nombre, Stock, Precio, Imagen, Marca) ) 
-			let resultado = await productos.filter(producto => producto.precio > 300 )
-			
-			return resultado
+		const WAIT = timeout => {
+			return new Promise( resolve => setTimeout(resolve, timeout) )
 		}
+		
+		const mostrarCatalogo = async (rango) => {
 
-		window.onload = async () => {
-			let catalogo = await armarCatalogo()
-
+			let objetos = await GET("productos.json")
+			let catalogo = Producto.ArmarCatalogo(objetos, rango)
+			debugger
 			if( catalogo instanceof Array ){	
-				catalogo.forEach( producto => {
-					producto.Mostrar()
+				catalogo.forEach( async producto => {
+					
+					await WAIT(1000)
+					await producto.Mostrar()
 				})
 			}else{
 				catalogo.Mostrar()
 			}
 		}
+
+		document.querySelectorAll(".filtros button").forEach(filtro => {
+			filtro.onclick = (evento) => {
+				let rango = {
+					min : evento.target.getAttribute("data-min"),
+					max : evento.target.getAttribute("data-max")
+				}
+				console.log(rango)
+				mostrarCatalogo(rango)
+			}
+		})
+
+		window.onload = mostrarCatalogo()
+		
 	</script>
 </body>
 

@@ -6,7 +6,9 @@ class Producto {
         this.imagen = i
         this.marca = m
     }
-    Mostrar(){
+
+    /////////////////////////////////Metodos de instancia/////////////////////////////////////
+    Mostrar(){ //<--Metodo de instancia. Se usan una vez instanciado el objeto producto
         const ficha = document.createElement("article")
         ficha.classList.add("col-4")
         ficha.innerHTML = `<div class="card h-100">
@@ -21,9 +23,24 @@ class Producto {
                                 </div>`
         document.querySelector("#productos-destacados").appendChild(ficha)
     }
-    Descuento(cupon){
+    Descuento(cupon){ //<--Metodo de instancia. Se usan una vez instanciado el objeto producto
         if (cupon === "masbarato"){
             this.precio = this.precio * 0.85
         }
+    }
+    ///////////////////////Metodos de clase o estaticos///////////////////////////////////
+    static ArmarCatalogo(objetos, rango){
+        let productos = objetos.map( ({Nombre, Stock, Precio, Imagen, Marca}) => new Producto(Nombre, Stock, Precio, Imagen, Marca) ) 
+        
+        /////FORMA NO RECOMENDADA///////
+        // if( rango ){
+        //     let resultado = productos.filter(producto => producto.precio > rango.min && producto.precio < rango.max)
+        // } else {
+        //     let resultado = productos
+        // }
+        ///////OPERADOR TERNARIO///////
+        let resultado = rango ? productos.filter(producto => producto.precio > rango.min && producto.precio < rango.max) : productos
+
+        return resultado
     }
 }
