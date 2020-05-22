@@ -43,7 +43,8 @@
 	</header>
 	<main class="container">
 		<h2 class="w-100 my-3 p-3 border">&#x2B50; Productos Destacados</h2>
-		<nav class="filtros">
+		<nav id="filtros">
+			<button class="btn btn-secondary" data-min="0" data-max="999999" >Todos</button>
 			<button class="btn btn-secondary" data-min="0" data-max="500" >$0 - $500</button>
 			<button class="btn btn-secondary" data-min="500" data-max="1500">$500 - $1500</button>
 			<button class="btn btn-secondary" data-min="1500" data-max="999999">+ $1500</button>
@@ -94,7 +95,7 @@
 		const GET = async url => { ///Se puede usar como genericamente para consumir JSON
 				let rta = await fetch(url)
 				return await rta.json()
-		}
+		}	
 
 		const WAIT = timeout => {
 			return new Promise( resolve => setTimeout(resolve, timeout) )
@@ -102,9 +103,17 @@
 		
 		const mostrarCatalogo = async (rango) => {
 
+			if ( !localStorage.getItem("CATALOGO") ){
+				let objetos = await GET("productos.json")
+				localStorage.setItem("CATALOGO", JSON.stringify(objetos))
+			}else{
+				let objetos = JSON.parse( localStorage.getItem("CATALOGO") )
+			}
+
 			let objetos = await GET("productos.json")
+
 			let catalogo = Producto.ArmarCatalogo(objetos, rango)
-			debugger
+
 			if( catalogo instanceof Array ){	
 				catalogo.forEach( async producto => {
 					
@@ -116,19 +125,32 @@
 			}
 		}
 
-		document.querySelectorAll(".filtros button").forEach(filtro => {
+		document.querySelectorAll("#filtros button").forEach(filtro => {
 			filtro.onclick = (evento) => {
 				let rango = {
 					min : evento.target.getAttribute("data-min"),
 					max : evento.target.getAttribute("data-max")
 				}
-				console.log(rango)
+				document.querySelector("#productos-destacados").innerHTML = null
 				mostrarCatalogo(rango)
 			}
 		})
 
 		window.onload = mostrarCatalogo()
+		////////////////////////sessionstorage & localstorage
+		// localStorage.setItem()
+		// localStorage.getItem()
+		// localStorage.removeItem()
+		// localStorage.clear()
+
+		localStorage.setItem("usuario", "feno")
 		
+		let usuario = localStorage.getItem("usuario")
+		alert(`Bienvenido ${usuario}`)
+		
+		localStorage.removeItem("usuario")
+
+		localStorage.clear()
 	</script>
 </body>
 
