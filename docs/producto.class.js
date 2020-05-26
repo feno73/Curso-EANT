@@ -16,11 +16,27 @@ class Producto {
                                         <img class="card-img-top img-fluid" src=${this.imagen} alt="">
                                     </a>
                                     <div class="card-body">
-                                        <h4 class="card-title"><a href="#">${this.marca} ${this.nombre}</a> <span class="badge badge-pill badge-success float-right">$${this.precio}</span></h4>
+                                        <h4 class="card-title"><a href="#">${this.marca} ${this.nombre}</a> <span class="badge badge-pill badge-success float-right">$${parseFloat(this.precio).toFixed(2)}</span></h4>
                                         <p class="card-text">${this.stock} unid.</p>
-                                        <button class="btn btn-primary float-right">Comprar</button>
+                                        <button class="btn-editar btn btn-warning float-left">Editar</button>
+                                        <button class="btn-comprar btn btn-primary float-right">Comprar</button>
                                     </div>
                                 </div>`
+
+        ficha.querySelector(".btn-editar").onclick = (evento) => {
+
+            console.log(this)
+            console.log(evento.target) //<-- Este comportamiento tiene el this cuando se usa function en lugar de "=>"
+            
+            this.marca = prompt("Ingrese nueva marca:", this.marca)
+            this.nombre = prompt("Ingrese nuevo nombre:", this.nombre)
+            this.stock = prompt("Ingrese un nuevo stock:", this.stock)
+            this.precio = prompt("Ingrese un nuevo precio:", this.precio)
+            this.imagen = prompt("Ingrese nueva imagen:", this.imagen)
+
+            this.Mostrar()
+        }
+
         document.querySelector("#productos-destacados").appendChild(ficha)
     }
     Descuento(cupon){ //<--Metodo de instancia. Se usan una vez instanciado el objeto producto

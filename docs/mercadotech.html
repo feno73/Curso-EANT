@@ -103,11 +103,12 @@
 		
 		const mostrarCatalogo = async (rango) => {
 
+			let objetos = null
 			if ( !localStorage.getItem("CATALOGO") ){
-				let objetos = await GET("productos.json")
+				objetos = await GET("productos.json")
 				localStorage.setItem("CATALOGO", JSON.stringify(objetos))
 			}else{
-				let objetos = JSON.parse( localStorage.getItem("CATALOGO") )
+				objetos = JSON.parse( localStorage.getItem("CATALOGO") )
 			}
 
 			let catalogo = Producto.ArmarCatalogo(objetos, rango)
