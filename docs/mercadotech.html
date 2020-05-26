@@ -110,8 +110,6 @@
 				let objetos = JSON.parse( localStorage.getItem("CATALOGO") )
 			}
 
-			let objetos = await GET("productos.json")
-
 			let catalogo = Producto.ArmarCatalogo(objetos, rango)
 
 			if( catalogo instanceof Array ){	
