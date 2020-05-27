@@ -5,13 +5,13 @@ class Producto {
         this.precio = p
         this.imagen = i
         this.marca = m
+        this.vDOM = document.createElement("article")
     }
 
     /////////////////////////////////Metodos de instancia/////////////////////////////////////
     Mostrar(){ //<--Metodo de instancia. Se usan una vez instanciado el objeto producto
-        const ficha = document.createElement("article")
-        ficha.classList.add("col-4")
-        ficha.innerHTML = `<div class="card h-100">
+        this.vDOM.classList.add("col-4")
+        this.vDOM.innerHTML = `<div class="card h-100">
                                     <a href="#">
                                         <img class="card-img-top img-fluid" src=${this.imagen} alt="">
                                     </a>
@@ -23,7 +23,9 @@ class Producto {
                                     </div>
                                 </div>`
 
-        ficha.querySelector(".btn-editar").onclick = (evento) => {
+        document.querySelector("#productos-destacados").appendChild(this.vDOM)
+
+        this.vDOM.querySelector(".btn-editar").onclick = (evento) => {
 
             console.log(this)
             console.log(evento.target) //<-- Este comportamiento tiene el this cuando se usa function en lugar de "=>"
@@ -37,7 +39,6 @@ class Producto {
             this.Mostrar()
         }
 
-        document.querySelector("#productos-destacados").appendChild(ficha)
     }
     Descuento(cupon){ //<--Metodo de instancia. Se usan una vez instanciado el objeto producto
         if (cupon === "masbarato"){
