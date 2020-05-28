@@ -5,6 +5,7 @@ class Producto {
         this.precio = p
         this.imagen = i
         this.marca = m
+        this.estado = false
         this.vDOM = document.createElement("article")
     }
 
@@ -23,7 +24,11 @@ class Producto {
                                     </div>
                                 </div>`
 
-        document.querySelector("#productos-destacados").appendChild(this.vDOM)
+        if(!this.estado){ //<-- Valida si el elemento esta en la interfaz
+            document.querySelector("#productos-destacados").appendChild(this.vDOM)
+            this.estado = true
+        }
+        
 
         this.vDOM.querySelector(".btn-editar").onclick = (evento) => {
 
@@ -37,6 +42,25 @@ class Producto {
             this.imagen = prompt("Ingrese nueva imagen:", this.imagen)
 
             this.Mostrar()
+
+            //aca voy a mandar los datos actualizados al servidor
+            let formulario = new FormData()
+            formulario.append("marca", this.marca)
+            formulario.append("nombre", this.nombre)
+            formulario.append("stock", this.stock)
+            formulario.append("precio", this.precio)
+            formulario.append("imagen", this.imagen)
+
+            let config = {
+                method : "POST",
+                headers : {
+                    "Content-Type" : "application/x-www-form-urlencoded"
+                    // "Content-Type" : "application/multipart-form-data",
+                    // "Content-Type" : "application/JSON",
+                },
+                body : formulario
+            }
+            fetch("https://webhook.site/930d0a32-6c2c-4d6b-92df-81489ed94d91", config)
         }
 
     }
