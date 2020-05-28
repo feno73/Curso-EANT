@@ -16,6 +16,6 @@ server.get("/saludo", function(request, response){
 //server.post("Ruta", proceso)
 
 
-server.listen(80, function(){
+server.listen(2000, function(){
     console.log("Server levantado")
 })

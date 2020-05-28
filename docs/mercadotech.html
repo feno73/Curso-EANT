@@ -63,6 +63,7 @@
 	<script
 		src="https://blackrockdigital.github.io/startbootstrap-shop-item/vendor/bootstrap/js/bootstrap.bundle.min.js">
 	</script>
+	<script src="https://apis.google.com/js/api:client.js"></script>
 	<script src="producto.class.js"></script>
 	<script>
 		/*let xiaomi = new Producto("Mi 10", 1000, 549.99, "http://placeimg.com/480/320/tech", "Xiaomi")
@@ -90,6 +91,15 @@
 		// 			resultado.Mostrar()
 		// 		}
 		// 	})
+		////////////////////////LOGIN GOOGLE///////////////////////////
+		gapi.load("auth2", () => {
+			let credenciales = {
+        		client_id: '688802379887-6t7dmriflh8t3pajvkbk322n6ish4hph.apps.googleusercontent.com',
+				cookiepolicy: 'single_host_origin',
+			}
+			window.auth2 = gapi.auth2.init( credenciales ) //se define con window para que sea una variable global
+		})
+
 		//////////////////////Usos ASYNC/AWAIT/////////////////////////////
 
 		const GET = async url => { ///Se puede usar como genericamente para consumir JSON
@@ -142,14 +152,14 @@
 		// localStorage.removeItem()
 		// localStorage.clear()
 
-		localStorage.setItem("usuario", "feno")
+		// localStorage.setItem("usuario", "feno")
 		
-		let usuario = localStorage.getItem("usuario")
-		alert(`Bienvenido ${usuario}`)
+		// let usuario = localStorage.getItem("usuario")
+		// alert(`Bienvenido ${usuario}`)
 		
-		localStorage.removeItem("usuario")
+		// localStorage.removeItem("usuario")
 
-		localStorage.clear()
+		// localStorage.clear()
 	</script>
 </body>
 
