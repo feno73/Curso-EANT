@@ -34,8 +34,8 @@
 					<li class="nav-item">
 						<a id="login" class="nav-link" href="#">&#x1F512; Ingresar</a>
 					</li>
-					<li class="nav-item d-none">
-						<a id="logout" class="nav-link" href="#">Bienvenid@ <span>{{USUARIO}}</span> [x]</a>
+					<li class="nav-item">
+						<a id="logout" class="nav-link d-none" href="#">Bienvenid@ <span>{{USUARIO}}</span> [x]</a>
 					</li>
 				</ul>
 			</nav>
@@ -94,12 +94,40 @@
 		////////////////////////LOGIN GOOGLE///////////////////////////
 		gapi.load("auth2", () => {
 			let credenciales = {
-        		client_id: '688802379887-6t7dmriflh8t3pajvkbk322n6ish4hph.apps.googleusercontent.com',
+        		client_id: '688802379887-jm3rr6954s8dknptjvhtnahofduht5f7.apps.googleusercontent.com',
 				cookiepolicy: 'single_host_origin',
 			}
 			window.auth2 = gapi.auth2.init( credenciales ) //se define con window para que sea una variable global
+			window.auth2.then( () => { //<-- Ver si esta logeado luego de inicializar con las credenciales
+				if( window.auth2.isSignedIn.get() ){
+					bienvenida()
+				}
+			})
 		})
+		
 
+
+		document.querySelector("#login").onclick = e => {
+			e.preventDefault()
+			window.auth2.signIn().then( bienvenida )
+		}
+
+		document.querySelector("#logout").onclick = e => {
+			e.preventDefault()
+
+			window.auth2.signOut()
+			document.querySelector("#logout").classList.add("d-none")
+			document.querySelector("#login").classList.remove("d-none")
+		}
+
+		//logueo de usuario
+		const bienvenida =  () => {
+			window.usuario = window.auth2.currentUser.get().getBasicProfile()
+
+			document.querySelector("#logout span").innerText = window.usuario.getName()
+			document.querySelector("#login").classList.add("d-none")
+			document.querySelector("#logout").classList.remove("d-none")
+		}
 		//////////////////////Usos ASYNC/AWAIT/////////////////////////////
 
 		const GET = async url => { ///Se puede usar como genericamente para consumir JSON
