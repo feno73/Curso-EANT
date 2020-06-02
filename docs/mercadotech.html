@@ -106,12 +106,12 @@
 		})
 		
 
-
+		////Boton LogIn//////////////////
 		document.querySelector("#login").onclick = e => {
 			e.preventDefault()
 			window.auth2.signIn().then( bienvenida )
 		}
-
+		///////Boton LogOut////////////////
 		document.querySelector("#logout").onclick = e => {
 			e.preventDefault()
 
@@ -119,14 +119,14 @@
 			document.querySelector("#logout").classList.add("d-none")
 			document.querySelector("#login").classList.remove("d-none")
 		}
-
-		//logueo de usuario
+		///////logueo de usuario///////////
 		const bienvenida =  () => {
 			window.usuario = window.auth2.currentUser.get().getBasicProfile()
 
 			document.querySelector("#logout span").innerText = window.usuario.getName()
 			document.querySelector("#login").classList.add("d-none")
 			document.querySelector("#logout").classList.remove("d-none")
+
 		}
 		//////////////////////Usos ASYNC/AWAIT/////////////////////////////
 

@@ -19,7 +19,7 @@ class Producto {
                                     <div class="card-body">
                                         <h4 class="card-title"><a href="#">${this.marca} ${this.nombre}</a> <span class="badge badge-pill badge-success float-right">$${parseFloat(this.precio).toFixed(2)}</span></h4>
                                         <p class="card-text">${this.stock} unid.</p>
-                                        <button class="btn-editar btn btn-warning float-left">Editar</button>
+                                        <button class="btn-editar btn btn-warning float-left ${ (auth2 && auth2.isSignedIn.get()) ? " " : "d-none"}">Editar</button>
                                         <button class="btn-comprar btn btn-primary float-right">Comprar</button>
                                     </div>
                                 </div>`
@@ -35,32 +35,40 @@ class Producto {
             console.log(this)
             console.log(evento.target) //<-- Este comportamiento tiene el this cuando se usa function en lugar de "=>"
             
-            this.marca = prompt("Ingrese nueva marca:", this.marca)
-            this.nombre = prompt("Ingrese nuevo nombre:", this.nombre)
-            this.stock = prompt("Ingrese un nuevo stock:", this.stock)
-            this.precio = prompt("Ingrese un nuevo precio:", this.precio)
-            this.imagen = prompt("Ingrese nueva imagen:", this.imagen)
+            if (auth2.isSignedIn.get()) {
 
-            this.Mostrar()
-
-            //aca voy a mandar los datos actualizados al servidor
-            let formulario = new FormData()
-            formulario.append("marca", this.marca)
-            formulario.append("nombre", this.nombre)
-            formulario.append("stock", this.stock)
-            formulario.append("precio", this.precio)
-            formulario.append("imagen", this.imagen)
-
-            let config = {
-                method : "POST",
-                headers : {
-                    "Content-Type" : "application/x-www-form-urlencoded"
-                    // "Content-Type" : "application/multipart-form-data",
-                    // "Content-Type" : "application/JSON",
-                },
-                body : formulario
+                //Editar datos del producto
+                this.marca = prompt("Ingrese nueva marca:", this.marca)
+                this.nombre = prompt("Ingrese nuevo nombre:", this.nombre)
+                this.stock = prompt("Ingrese un nuevo stock:", this.stock)
+                this.precio = prompt("Ingrese un nuevo precio:", this.precio)
+                this.imagen = prompt("Ingrese nueva imagen:", this.imagen)
+    
+                //Mostrar con los nuevos datos
+                this.Mostrar()
+    
+                //aca voy a mandar los datos actualizados al servidor
+                let formulario = new FormData()
+                formulario.append("marca", this.marca)
+                formulario.append("nombre", this.nombre)
+                formulario.append("stock", this.stock)
+                formulario.append("precio", this.precio)
+                formulario.append("imagen", this.imagen)
+    
+                let config = {
+                    method : "POST",
+                    headers : {
+                        "Content-Type" : "application/x-www-form-urlencoded"
+                        // "Content-Type" : "application/multipart-form-data",
+                        // "Content-Type" : "application/JSON",
+                    },
+                    body : formulario
+                }
+                fetch("https://webhook.site/930d0a32-6c2c-4d6b-92df-81489ed94d91", config)                
+            }else{
+                alert("Hay que logearse")
             }
-            fetch("https://webhook.site/930d0a32-6c2c-4d6b-92df-81489ed94d91", config)
+
         }
 
     }
