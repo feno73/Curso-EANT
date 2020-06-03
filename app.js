@@ -2,6 +2,7 @@ const express = require("express")
 
 const server = express()
 
+const port = process.env.PORT || 2000
 
 const docs = express.static("docs")
 server.use(docs)
@@ -16,6 +17,6 @@ server.get("/saludo", function(request, response){
 //server.post("Ruta", proceso)
 
 
-server.listen(2000, function(){
+server.listen(port, function(){
     console.log("Server levantado")
 })
