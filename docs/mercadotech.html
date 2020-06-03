@@ -92,6 +92,7 @@
 		// 		}
 		// 	})
 		////////////////////////LOGIN GOOGLE///////////////////////////
+		window.auth2 = null
 		gapi.load("auth2", () => {
 			let credenciales = {
         		client_id: '688802379887-jm3rr6954s8dknptjvhtnahofduht5f7.apps.googleusercontent.com',
@@ -118,6 +119,9 @@
 			window.auth2.signOut()
 			document.querySelector("#logout").classList.add("d-none")
 			document.querySelector("#login").classList.remove("d-none")
+			document.querySelectorAll(".btn-editar").forEach(btn => {
+				btn.classList.add("d-none")
+			})
 		}
 		///////logueo de usuario///////////
 		const bienvenida =  () => {
@@ -126,7 +130,9 @@
 			document.querySelector("#logout span").innerText = window.usuario.getName()
 			document.querySelector("#login").classList.add("d-none")
 			document.querySelector("#logout").classList.remove("d-none")
-
+			document.querySelectorAll(".btn-editar").forEach(btn => {
+				btn.classList.remove("d-none")
+			})
 		}
 		//////////////////////Usos ASYNC/AWAIT/////////////////////////////
 

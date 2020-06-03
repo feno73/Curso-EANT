@@ -19,7 +19,7 @@ class Producto {
                                     <div class="card-body">
                                         <h4 class="card-title"><a href="#">${this.marca} ${this.nombre}</a> <span class="badge badge-pill badge-success float-right">$${parseFloat(this.precio).toFixed(2)}</span></h4>
                                         <p class="card-text">${this.stock} unid.</p>
-                                        <button class="btn-editar btn btn-warning float-left ${ (auth2 && auth2.isSignedIn.get()) ? " " : "d-none"}">Editar</button>
+                                        <button class="btn-editar btn btn-warning float-left ${ (auth2 && auth2.isSignedIn.get() == true) ? " " : "d-none"}">Editar</button>
                                         <button class="btn-comprar btn btn-primary float-right">Comprar</button>
                                     </div>
                                 </div>`
