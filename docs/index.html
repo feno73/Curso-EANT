@@ -53,6 +53,22 @@
 		<section id="productos-destacados" class="row py-3">
 
 		</section>
+		<!-- AREA FICHA PRODUCTOS -->
+		<section id="producto" class="row py-3 d-none">
+			<div class="col-9">
+				<div class="card">
+					<img id="producto-imagen" class="card-img-top img-fluid" src="{{IMAGEN}}" alt="">
+					<div class="card-body">
+						<h3 class="card-title" id="producto-nombre">{{NOMBRE}}</h3>
+						<h4 id="producto-precio">{{PRECIO}}</h4>
+						<p id="producto-detalle" class="card-text">{{DETALLE}}</p>
+					</div>
+				</div>
+			</div>		
+			<div class="col-3">
+				<button class="btn btn-primary btn-lg btn-block">Confirmar Compra</button>
+			</div>
+		</section>
 	</main>
 	<footer class="py-5 bg-dark">
 		<div class="container">
@@ -180,6 +196,19 @@
 		})
 
 		window.onload = mostrarCatalogo()
+
+		window.onpopstate = () => {
+			const CATALOGO = document.querySelector("#productos-destacados")
+			const FICHA = document.querySelector("#producto")
+			
+			if ( window.location.pathname = "/" ){
+				CATALOGO.classList.remove("d-none")	
+				FICHA.classList.add("d-none")
+			}else{
+				CATALOGO.classList.add("d-none")	
+				FICHA.classList.remove("d-none")
+			}
+		}
 		////////////////////////sessionstorage & localstorage
 		// localStorage.setItem()
 		// localStorage.getItem()
