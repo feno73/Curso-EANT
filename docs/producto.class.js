@@ -1,5 +1,6 @@
 class Producto {
-    constructor(n, s, p, i, m){
+    constructor(id, n, s, p, i, m){
+        this.id = id
         this.nombre = n
         this.stock = s
         this.precio = p
@@ -20,7 +21,7 @@ class Producto {
                                         <h4 class="card-title"><a href="#">${this.marca} ${this.nombre}</a> <span class="badge badge-pill badge-success float-right">$${parseFloat(this.precio).toFixed(2)}</span></h4>
                                         <p class="card-text">${this.stock} unid.</p>
                                         <button class="btn-editar btn btn-warning float-left ${ (auth2 && auth2.isSignedIn.get() == true) ? " " : "d-none"}">Editar</button>
-                                        <button class="btn-comprar btn btn-primary float-right">Comprar</button>
+                                        <button class="btn-ver btn btn-primary float-right">Ver +</button>
                                     </div>
                                 </div>`
 
@@ -71,6 +72,22 @@ class Producto {
 
         }
 
+        this.vDOM.querySelector(".btn-ver").onclick = e => {
+            
+                        //mt-1-apple-iphone-6
+            const PATH = (`/MT-${this.id}-${this.marca.replace(" ", "-")}-${this.nombre.split(" ").join("-")}`).toLowerCase()        
+            const HTML = document.querySelector("#producto")
+
+            HTML.querySelector("#producto-imagen").src = this.imagen
+            HTML.querySelector("#producto-nombre").innerText = this.marca + " - " + this.nombre
+            HTML.querySelector("#producto-precio").innerText = "$" + this.precio
+            HTML.querySelector("#producto-detalle").innerText = "Deberia traer el detalle en el JSON"
+            HTML.classList.remove("d-none")
+            document.querySelector("#filtros").classList.add("d-none")
+            document.querySelector("#productos-destacados").classList.add("d-none")
+
+            window.history.pushState({}, PATH, window.location.origin + PATH)
+        }
     }
     Descuento(cupon){ //<--Metodo de instancia. Se usan una vez instanciado el objeto producto
         if (cupon === "masbarato"){
@@ -79,7 +96,7 @@ class Producto {
     }
     ///////////////////////Metodos de clase o estaticos///////////////////////////////////
     static ArmarCatalogo(objetos, rango){
-        let productos = objetos.map( ({Nombre, Stock, Precio, Imagen, Marca}) => new Producto(Nombre, Stock, Precio, Imagen, Marca) ) 
+        let productos = objetos.map( ({idProducto, Nombre, Stock, Precio, Imagen, Marca}) => new Producto(idProducto, Nombre, Stock, Precio, Imagen, Marca) ) 
         
         /////FORMA NO RECOMENDADA///////
         // if( rango ){
