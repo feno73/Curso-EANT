@@ -1,14 +1,21 @@
 <!DOCTYPE html>
 <html lang="es-AR">
-
-<head>
-	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width,initial-scale=1,shrink-to-fit=no">
-	<title>MercadoTECH - Tu e-shop.js</title>
-	<link rel="stylesheet"
-		href="https://blackrockdigital.github.io/startbootstrap-shop-item/vendor/bootstrap/css/bootstrap.min.css">
-	<link rel="stylesheet" href="https://blackrockdigital.github.io/startbootstrap-shop-item/css/shop-item.css">
-<!-- 	<style>
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width,initial-scale=1,shrink-to-fit=no"
+    />
+    <title>MercadoTECH - Tu e-shop.js</title>
+    <link
+      rel="stylesheet"
+      href="https://blackrockdigital.github.io/startbootstrap-shop-item/vendor/bootstrap/css/bootstrap.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://blackrockdigital.github.io/startbootstrap-shop-item/css/shop-item.css"
+    />
+    <!-- 	<style>
 		article{
 			opacity: 0;
 			animation: fadeIN 3s forwards;
@@ -19,54 +26,71 @@
 			to { opacity: 1 }			
 		}
 	</style> -->
-</head>
+  </head>
 
-<body>
-	<header class="navbar navbar-expand-lg navbar-dark bg-secondary fixed-top">
-		<div class="container">
-			<a class="navbar-brand font-weight-bold" href="#">&#x1F5A5; MercadoTECH</a>
-			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#menu" aria-controls="menu"
-				aria-expanded="false" aria-label="Menu">
-				<span class="navbar-toggler-icon"></span>
-			</button>
-			<nav class="collapse navbar-collapse" id="menu">
-				<ul class="navbar-nav ml-auto">
-					<li class="nav-item">
-						<a id="login" class="nav-link" href="#">&#x1F512; Ingresar</a>
-					</li>
-					<li class="nav-item">
-						<a id="logout" class="nav-link d-none" href="#">Bienvenid@ <span>{{USUARIO}}</span> [x]</a>
-					</li>
-				</ul>
-			</nav>
-		</div>
-	</header>
-	<main class="container">
-		<h2 class="w-100 my-3 p-3 border">&#x2B50; Productos Destacados</h2>
-		<nav id="filtros">
-			<button class="btn btn-secondary" data-min="0" data-max="999999" >Todos</button>
-			<button class="btn btn-secondary" data-min="0" data-max="500" >$0 - $500</button>
-			<button class="btn btn-secondary" data-min="500" data-max="1500">$500 - $1500</button>
-			<button class="btn btn-secondary" data-min="1500" data-max="999999">+ $1500</button>
-		</nav>
-		<!-- AREA PRODUCTOS DESTACADOS -->
-		<section id="productos-destacados" class="row py-3">
-
-		</section>
-	</main>
-	<footer class="py-5 bg-dark">
-		<div class="container">
-			<p class="m-0 text-center text-white">¡La mejor manera de comprar online!</p>
-		</div>
-	</footer>
-	<script src="https://blackrockdigital.github.io/startbootstrap-shop-item/vendor/jquery/jquery.min.js"></script>
-	<script
-		src="https://blackrockdigital.github.io/startbootstrap-shop-item/vendor/bootstrap/js/bootstrap.bundle.min.js">
-	</script>
-	<script src="https://apis.google.com/js/api:client.js"></script>
-	<script src="producto.class.js"></script>
-	<script>
-		/*let xiaomi = new Producto("Mi 10", 1000, 549.99, "http://placeimg.com/480/320/tech", "Xiaomi")
+  <body>
+    <header class="navbar navbar-expand-lg navbar-dark bg-secondary fixed-top">
+      <div class="container">
+        <a class="navbar-brand font-weight-bold" href="#"
+          >&#x1F5A5; MercadoTECH</a
+        >
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-toggle="collapse"
+          data-target="#menu"
+          aria-controls="menu"
+          aria-expanded="false"
+          aria-label="Menu"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <nav class="collapse navbar-collapse" id="menu">
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+              <a id="login" class="nav-link" href="#">&#x1F512; Ingresar</a>
+            </li>
+            <li class="nav-item">
+              <a id="logout" class="nav-link d-none" href="#"
+                >Bienvenid@ <span>{{USUARIO}}</span> [x]</a
+              >
+            </li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+    <main class="container">
+      <h2 class="w-100 my-3 p-3 border">&#x2B50; Productos Destacados</h2>
+      <nav id="filtros">
+        <button class="btn btn-secondary" data-min="0" data-max="999999">
+          Todos
+        </button>
+        <button class="btn btn-secondary" data-min="0" data-max="500">
+          $0 - $500
+        </button>
+        <button class="btn btn-secondary" data-min="500" data-max="1500">
+          $500 - $1500
+        </button>
+        <button class="btn btn-secondary" data-min="1500" data-max="999999">
+          + $1500
+        </button>
+      </nav>
+      <!-- AREA PRODUCTOS DESTACADOS -->
+      <section id="productos-destacados" class="row py-3"></section>
+    </main>
+    <footer class="py-5 bg-dark">
+      <div class="container">
+        <p class="m-0 text-center text-white">
+          ¡La mejor manera de comprar online!
+        </p>
+      </div>
+    </footer>
+    <script src="https://blackrockdigital.github.io/startbootstrap-shop-item/vendor/jquery/jquery.min.js"></script>
+    <script src="https://blackrockdigital.github.io/startbootstrap-shop-item/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="https://apis.google.com/js/api:client.js"></script>
+    <script src="producto.class.js"></script>
+    <script>
+      /*let xiaomi = new Producto("Mi 10", 1000, 549.99, "http://placeimg.com/480/320/tech", "Xiaomi")
 		let nokia = new Producto("7.1", 1000, 349.99, "http://placeimg.com/480/320/tech", "Nokia")
 		let moto = new Producto("G8 Plus", 1000, 249.99, "http://placeimg.com/480/320/tech", "Moto")
 		let iphone = new Producto("iPhone X", 1000, 949.99, "http://placeimg.com/480/320/tech", "Apple")
@@ -78,123 +102,124 @@
 		listado.forEach(function(producto){
 			producto.Mostrar()
 		})*/
-		///////////////////////AJAX//////////////////////////////////////////
-		// fetch("productos.json").then(rta =>  rta.json() )
-		// 	.then(objetos => objetos.map( ({Nombre, Stock, Precio, Imagen, Marca}) => new Producto(Nombre, Stock, Precio, Imagen, Marca) ) )
-		// 	.then(productos => productos.filter(producto => producto.precio > 300 ) )
-		// 	.then(resultado => {
-		// 		if( resultado instanceof Array ){	
-		// 			resultado.forEach( producto => {
-		// 				resultado.Mostrar()
-		// 			})
-		// 		}else{
-		// 			resultado.Mostrar()
-		// 		}
-		// 	})
-		////////////////////////LOGIN GOOGLE///////////////////////////
-		window.auth2 = null
-		gapi.load("auth2", () => {
-			let credenciales = {
-        		client_id: '688802379887-jm3rr6954s8dknptjvhtnahofduht5f7.apps.googleusercontent.com',
-				cookiepolicy: 'single_host_origin',
-			}
-			window.auth2 = gapi.auth2.init( credenciales ) //se define con window para que sea una variable global
-			window.auth2.then( () => { //<-- Ver si esta logeado luego de inicializar con las credenciales
-				if( window.auth2.isSignedIn.get() ){
-					bienvenida()
-				}
-			})
-		})
-		
+      ///////////////////////AJAX//////////////////////////////////////////
+      // fetch("productos.json").then(rta =>  rta.json() )
+      // 	.then(objetos => objetos.map( ({Nombre, Stock, Precio, Imagen, Marca}) => new Producto(Nombre, Stock, Precio, Imagen, Marca) ) )
+      // 	.then(productos => productos.filter(producto => producto.precio > 300 ) )
+      // 	.then(resultado => {
+      // 		if( resultado instanceof Array ){
+      // 			resultado.forEach( producto => {
+      // 				resultado.Mostrar()
+      // 			})
+      // 		}else{
+      // 			resultado.Mostrar()
+      // 		}
+      // 	})
+      ////////////////////////LOGIN GOOGLE///////////////////////////
+      window.auth2 = null;
+      gapi.load("auth2", () => {
+        let credenciales = {
+          client_id:
+            "688802379887-jm3rr6954s8dknptjvhtnahofduht5f7.apps.googleusercontent.com",
+          cookiepolicy: "single_host_origin",
+        };
+        window.auth2 = gapi.auth2.init(credenciales); //se define con window para que sea una variable global
+        window.auth2.then(() => {
+          //<-- Ver si esta logeado luego de inicializar con las credenciales
+          if (window.auth2.isSignedIn.get()) {
+            bienvenida();
+          }
+        });
+      });
 
-		////Boton LogIn//////////////////
-		document.querySelector("#login").onclick = e => {
-			e.preventDefault()
-			window.auth2.signIn().then( bienvenida )
-		}
-		///////Boton LogOut////////////////
-		document.querySelector("#logout").onclick = e => {
-			e.preventDefault()
+      ////Boton LogIn//////////////////
+      document.querySelector("#login").onclick = (e) => {
+        e.preventDefault();
+        window.auth2.signIn().then(bienvenida);
+      };
+      ///////Boton LogOut////////////////
+      document.querySelector("#logout").onclick = (e) => {
+        e.preventDefault();
 
-			window.auth2.signOut()
-			document.querySelector("#logout").classList.add("d-none")
-			document.querySelector("#login").classList.remove("d-none")
-			document.querySelectorAll(".btn-editar").forEach(btn => {
-				btn.classList.add("d-none")
-			})
-		}
-		///////logueo de usuario///////////
-		const bienvenida =  () => {
-			window.usuario = window.auth2.currentUser.get().getBasicProfile()
+        window.auth2.signOut();
+        document.querySelector("#logout").classList.add("d-none");
+        document.querySelector("#login").classList.remove("d-none");
+        document.querySelectorAll(".btn-editar").forEach((btn) => {
+          btn.classList.add("d-none");
+        });
+      };
+      ///////logueo de usuario///////////
+      const bienvenida = () => {
+        window.usuario = window.auth2.currentUser.get().getBasicProfile();
 
-			document.querySelector("#logout span").innerText = window.usuario.getName()
-			document.querySelector("#login").classList.add("d-none")
-			document.querySelector("#logout").classList.remove("d-none")
-			document.querySelectorAll(".btn-editar").forEach(btn => {
-				btn.classList.remove("d-none")
-			})
-		}
-		//////////////////////Usos ASYNC/AWAIT/////////////////////////////
+        document.querySelector(
+          "#logout span"
+        ).innerText = window.usuario.getName();
+        document.querySelector("#login").classList.add("d-none");
+        document.querySelector("#logout").classList.remove("d-none");
+        document.querySelectorAll(".btn-editar").forEach((btn) => {
+          btn.classList.remove("d-none");
+        });
+      };
+      //////////////////////Usos ASYNC/AWAIT/////////////////////////////
 
-		const GET = async url => { ///Se puede usar como genericamente para consumir JSON
-				let rta = await fetch(url)
-				return await rta.json()
-		}	
+      const GET = async (url) => {
+        ///Se puede usar como genericamente para consumir JSON
+        let rta = await fetch(url);
+        return await rta.json();
+      };
 
-		const WAIT = timeout => {
-			return new Promise( resolve => setTimeout(resolve, timeout) )
-		}
-		
-		const mostrarCatalogo = async (rango) => {
+      const WAIT = (timeout) => {
+        return new Promise((resolve) => setTimeout(resolve, timeout));
+      };
 
-			let objetos = null
-			if ( !localStorage.getItem("CATALOGO") ){
-				objetos = await GET("productos.json")
-				localStorage.setItem("CATALOGO", JSON.stringify(objetos))
-			}else{
-				objetos = JSON.parse( localStorage.getItem("CATALOGO") )
-			}
+      const mostrarCatalogo = async (rango) => {
+        let objetos = null;
+        if (!localStorage.getItem("CATALOGO")) {
+          objetos = await GET("productos.json");
+          localStorage.setItem("CATALOGO", JSON.stringify(objetos));
+        } else {
+          objetos = JSON.parse(localStorage.getItem("CATALOGO"));
+        }
 
-			let catalogo = Producto.ArmarCatalogo(objetos, rango)
+        let catalogo = Producto.ArmarCatalogo(objetos, rango);
 
-			if( catalogo instanceof Array ){	
-				catalogo.forEach( async producto => {
-					
-					await WAIT(1000)
-					await producto.Mostrar()
-				})
-			}else{
-				catalogo.Mostrar()
-			}
-		}
+        if (catalogo instanceof Array) {
+          catalogo.forEach(async (producto) => {
+            await WAIT(1000);
+            await producto.Mostrar();
+          });
+        } else {
+          catalogo.Mostrar();
+        }
+      };
 
-		document.querySelectorAll("#filtros button").forEach(filtro => {
-			filtro.onclick = (evento) => {
-				let rango = {
-					min : evento.target.getAttribute("data-min"),
-					max : evento.target.getAttribute("data-max")
-				}
-				document.querySelector("#productos-destacados").innerHTML = null
-				mostrarCatalogo(rango)
-			}
-		})
+      document.querySelectorAll("#filtros button").forEach((filtro) => {
+        filtro.onclick = (evento) => {
+          let rango = {
+            min: evento.target.getAttribute("data-min"),
+            max: evento.target.getAttribute("data-max"),
+          };
+          document.querySelector("#productos-destacados").innerHTML = null;
+          mostrarCatalogo(rango);
+        };
+      });
 
-		window.onload = mostrarCatalogo()
-		////////////////////////sessionstorage & localstorage
-		// localStorage.setItem()
-		// localStorage.getItem()
-		// localStorage.removeItem()
-		// localStorage.clear()
+      window.onload = mostrarCatalogo();
+      ////////////////////////sessionstorage & localstorage
+      // localStorage.setItem()
+      // localStorage.getItem()
+      // localStorage.removeItem()
+      // localStorage.clear()
 
-		// localStorage.setItem("usuario", "feno")
-		
-		// let usuario = localStorage.getItem("usuario")
-		// alert(`Bienvenido ${usuario}`)
-		
-		// localStorage.removeItem("usuario")
+      // localStorage.setItem("usuario", "feno")
 
-		// localStorage.clear()
-	</script>
-</body>
+      // let usuario = localStorage.getItem("usuario")
+      // alert(`Bienvenido ${usuario}`)
 
+      // localStorage.removeItem("usuario")
+
+      // localStorage.clear()
+    </script>
+  </body>
 </html>
